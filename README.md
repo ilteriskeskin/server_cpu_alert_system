@@ -11,4 +11,6 @@ Unix Server Alert System
 
 - edit **CRITICAL**
 
+- pip3 install -r requirements.txt
+
 - python3 main.py
