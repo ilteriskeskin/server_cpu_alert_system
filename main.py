@@ -15,7 +15,6 @@ logging.basicConfig(filename='cpu_server_alert_system.log', filemode='a', format
 
 CRITICAL = 10
 
-
 def cpu_percent_controller():
     a = cpu()
     if a > CRITICAL:
@@ -25,7 +24,7 @@ def cpu_percent_controller():
         message = f'''\
             Subject: Server Alert!!
             {date} -- CPU Usage Percent: {a}'''
-        
+
         email_conn = smtplib.SMTP(host, port)
         email_conn.ehlo()
         email_conn.starttls()
@@ -33,6 +32,7 @@ def cpu_percent_controller():
         email_conn.sendmail(from_email, to_list, message)
         email_conn.quit()
     Timer(5.0, cpu_percent_controller).start()
+
 
 if __name__ == '__main__':
     cpu_percent_controller()
