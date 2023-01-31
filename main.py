@@ -17,6 +17,7 @@ CRITICAL = 10
 
 def cpu_percent_controller():
     a = cpu()
+    
     if a > CRITICAL:
         now = datetime.datetime.now()
         date = datetime.datetime.strftime(now, '%c')
@@ -31,6 +32,7 @@ def cpu_percent_controller():
         email_conn.login(username, password)
         email_conn.sendmail(from_email, to_list, message)
         email_conn.quit()
+        
     Timer(5.0, cpu_percent_controller).start()
 
 
